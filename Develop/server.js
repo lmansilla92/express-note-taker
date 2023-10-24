@@ -18,6 +18,11 @@ app.get('/', (req, res) =>
     res.sendFile(path.join(__dirname, 'public/index.html'))
 );
 
+// Creates route to serve the notes.html
+app.get('/notes', (req, res) =>
+    res.sendFile(path.join(__dirname, 'public/notes.html'))
+);
+
 // Use listen() method for the service to listen on the specified port
 app.listen(PORT, () =>
     console.log(`Express server listening at http://localhost:${PORT}`)
