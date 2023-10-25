@@ -9,8 +9,6 @@ const app = express();
 
 // Adds middleware to parse data to json
 app.use(express.json());
-// Adds middleware for parsing urlencoded data
-app.use(express.urlencoded({ extended: true }));
 
 // Declares the notes by requiring the db.json file in the db directory
 const notes = require('./db/db.json');
