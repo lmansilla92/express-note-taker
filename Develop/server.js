@@ -7,6 +7,9 @@ const path = require('path');
 // Initialize an instance of express.js
 const app = express();
 
+// Adds middleware to parse data to json
+app.use(express.json());
+
 // Declares the notesData by requiring the db.json file in the db directory
 const notesData = require('./db/db.json');
 
@@ -32,8 +35,7 @@ app.post('/api/notes', (req, res) => {
     res.json(`${req.method} request received`);
     // Logs the request in the terminal
     console.info(`${req.method} request received`);
-
-
+    console.log(req.body);
 });
 
 // Creates routes for any end point not found to send the index.html file
