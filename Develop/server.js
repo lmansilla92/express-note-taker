@@ -7,8 +7,11 @@ const path = require('path');
 // Initialize an instance of express.js
 const app = express();
 
-// Sepcifies the PORT on which the server will run
-const PORT = 3001;
+// Declares the notesData by requiring the db.json file in the db directory
+const notesData = require('./db/db.json');
+
+// Sepcifies the PORT on which the server will run, Checks PORT number in an environment variable using process.env.PORT
+const PORT = process.env.PORT || 3001;
 
 // Static middleware for the public folder
 app.use(express.static('public'));
@@ -23,7 +26,11 @@ app.get('/notes', (req, res) =>
     res.sendFile(path.join(__dirname, 'public/notes.html'))
 );
 
-// Use listen() method for the service to listen on the specified port
+app.get('/api/notes', (req, res) =>
+    res.json(notesData)
+);
+
+// Use listen() method for the server to listen on the specified port
 app.listen(PORT, () =>
     console.log(`Express server listening at http://localhost:${PORT}`)
 );
