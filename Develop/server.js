@@ -16,18 +16,29 @@ const PORT = process.env.PORT || 3001;
 // Static middleware for the public folder
 app.use(express.static('public'));
 
-// Creates routes for different end points
-app.get('/', (req, res) => 
-    res.sendFile(path.join(__dirname, 'public/index.html'))
-);
-
 // Creates route to serve the notes.html
 app.get('/notes', (req, res) =>
     res.sendFile(path.join(__dirname, 'public/notes.html'))
 );
 
+// Creates API route to read the db.json file and return all saved notes as JSON
 app.get('/api/notes', (req, res) =>
     res.json(notesData)
+);
+
+// Creates POST request
+app.post('/api/notes', (req, res) => {
+    // Lets client know tht the POST request was received
+    res.json(`${req.method} request received`);
+    // Logs the request in the terminal
+    console.info(`${req.method} request received`);
+
+
+});
+
+// Creates routes for any end point not found to send the index.html file
+app.get('*', (req, res) => 
+    res.sendFile(path.join(__dirname, 'public/index.html'))
 );
 
 // Use listen() method for the server to listen on the specified port
