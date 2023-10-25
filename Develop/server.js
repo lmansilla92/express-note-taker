@@ -9,9 +9,11 @@ const app = express();
 
 // Adds middleware to parse data to json
 app.use(express.json());
+// Adds middleware for parsing urlencoded data
+app.use(express.urlencoded({ extended: true }));
 
-// Declares the notesData by requiring the db.json file in the db directory
-const notesData = require('./db/db.json');
+// Declares the notes by requiring the db.json file in the db directory
+const notes = require('./db/db.json');
 
 // Sepcifies the PORT on which the server will run, Checks PORT number in an environment variable using process.env.PORT
 const PORT = process.env.PORT || 3001;
@@ -26,15 +28,31 @@ app.get('/notes', (req, res) =>
 
 // Creates API route to read the db.json file and return all saved notes as JSON
 app.get('/api/notes', (req, res) =>
-    res.json(notesData)
+    res.json(notes)
 );
 
 // Creates POST request
 app.post('/api/notes', (req, res) => {
+
+    // Declares a response object to send back to client
+    let response;
+
+    // Checks to make sure there is content in req.body, req.body.title, and req.body.text
+    if(req.body && req.body.title && req.body.text) {
+        response = {
+            status: 'success',
+            data: req.body
+        }
+        // Adds new note to the db.json which contains a string of note objects
+        notes.push(req.body);
+    }
+
     // Lets client know tht the POST request was received
     res.json(`${req.method} request received`);
+
     // Logs the request in the terminal
     console.info(`${req.method} request received`);
+    // Logs the body of the requestto the console which is an object containing the note title and text
     console.log(req.body);
 });
 
