@@ -2,7 +2,7 @@
 
 ## Repository
 
-In this repository you will find the application code to an express note taker. The purpose of this application is to have the ability to save a note containing a title and text body. This application uses express to make GET, POST, and DELETE requests and requires path, fs, and uuid. Path is used to join given path segments together. The fs module allows the ability to read and write files in order to update the notes list. In the process of building the backend of this application I learned that it is extremely important to parse data and stringify when needed respectively in order to display information and update it. Code disection is something that helped me understand what needs to be done for proper functionality. Going back line by line through examples in the express module from the UT Full Stack Boot Camp and commenting lines out to see what happened if it's missing in the code is the best way to understand certain procedures. 
+In this repository you will find the application code to an express note taker. The purpose of this application is to have the ability to save a note containing a title and text body. This application uses express to make GET, POST, and DELETE requests and requires path, fs, and uuid. Path is used to join given path segments together. The fs module allows the ability to read and write files in order to update the notes list. In the process of building the backend of this application I learned that it is extremely important to parse data and stringify when needed respectively in order to display information and update it. Code disection is something that helped me understand what needs to be done for proper functionality. Going back line by line through examples in the express module from the UT Full Stack Boot Camp and commenting lines out to see what happened if they're missing in the code is the best way to understand certain procedures necessary for the app to function properly. 
 
 ## Table of Contents
 
@@ -17,12 +17,12 @@ In this repository you will find the application code to an express note taker. 
 ## Appearance
 
 Landing Page:
-    ![Landing Page](Develop/images/note-landing.png)
+    ![Landing Page](/images/note-landing.png)
 
 Notes Page:
-    ![Notes Page](Develop/images/notes.png)
+    ![Notes Page](/images/notes.png)
 
-To view the deployed webpage click the following link: [Deployed Webpage]()
+To view the deployed webpage click the following link: [Deployed Webpage](https://mansilla-express-note-taker-095a92239421.herokuapp.com/)
 
 ## Contribute
 
@@ -37,6 +37,7 @@ If you need help on how to clone a GitHub repository into your local repository,
 - Use the "Clear Form" button to clear input if needed
 - Click the "Save Note" button to save the note
 - New notes will be displayed on the left 
+- Click on any saved note to display it in the main note section
 - Click the trash icon to delete any note
 
 ## Changes
