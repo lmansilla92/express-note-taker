@@ -8,7 +8,7 @@ const path = require('path');
 const fs = require('fs');
 
 // Helper method for generating unique ids, uuid is now a function that can be called to generate an id
-const uuid = require('./helpers/uuid');
+const uuid = require('./Develop/helpers/uuid');
 
 // Initialize an instance of express.js
 const app = express();
