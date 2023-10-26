@@ -1,3 +1,5 @@
+// TODO: Fix bug where new notes don't display until server is turned off.
+
 // Import express.js
 const express = require('express');
 
@@ -34,9 +36,12 @@ app.get('/notes', (req, res) =>
 );
 
 // Creates API route to read the db.json file and return all saved notes as JSON
-app.get('/api/notes', (req, res) =>
-    res.json(notes)
-);
+app.get('/api/notes', (req, res) => {
+    // Stores the parsed db.json file in the parsedDb const
+    const parsedDb = JSON.parse(fs.readFileSync("db/db.json", "utf-8"));
+    // Responds to the client with the parsedDb in JSON
+    res.json(parsedDb);
+});
 
 // Creates POST request
 app.post('/api/notes', (req, res) => {
@@ -79,6 +84,7 @@ app.post('/api/notes', (req, res) => {
                             ? console.error(writeErr)
                             : console.info('Successfully updated notes')
                 );
+                res.json(parsedNotes);
             };
         });
     } else {
