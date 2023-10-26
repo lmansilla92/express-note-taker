@@ -63,7 +63,7 @@ app.post('/api/notes', (req, res) => {
         const newNote = {
             title,
             text,
-            note_id: uuid()
+            id: uuid()
         };
 
         // Obtain existing notes by reading data from reviews.json file
@@ -92,28 +92,23 @@ app.post('/api/notes', (req, res) => {
         res.status(500).json('Error in posting note');
     }
 });
-    //     const response = {
-    //         status: 'success',
-    //         body: newNote
-    //     };
 
-    //     console.log(response);
-    //     res.status(201).json(response);
-    // } else {
-    //     res.status(500).json('Error in posting note');
-    // }
-        // // Adds new note to the db.json which contains a string of note objects
-        // notes.push(req.body);
-
-
-//     // Lets client know tht the POST request was received
-//     res.json(`${req.method} request received`);
-
-//     // Logs the request in the terminal
-//     console.info(`${req.method} request received`);
-//     // Logs the body of the requestto the console which is an object containing the note title and text
-//     console.log(req.body);
-// }    
+// Creates DELETE request by using :id as a placeholder for the specific id of the note that was clicked
+app.delete('/api/notes/:id', (req, res) => {
+    // Store the existing notes in db.json as a noteData variable
+    let noteData = fs.readFileSync('./db/db.json', 'utf-8');
+    // Parses the note data into json and stores it in parsedData
+    const parsedData = JSON.parse(noteData);
+    // filters through the parsedData notes json with a function that returns a false statement
+    const newNotes = parsedData.filter((note) => {
+        // Returns a false statement so the note can be deleted
+        return note.id !== req.params.id;
+    });
+    // Writes the new list of note objects to the db.json file which now doesn't include the deleted note
+    fs.writeFileSync('./db/db.json', JSON.stringify(newNotes, null, 4));
+    res.json('Note deleted!');
+    console.info('Note deleted!');
+});
 
 // Creates routes for any end point not found to send the index.html file
 app.get('*', (req, res) => 

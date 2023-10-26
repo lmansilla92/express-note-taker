@@ -1,12 +1,7 @@
 [
     {
-        "title": "Test Title",
-        "text": "Test text",
+        "title": "Sample Title",
+        "text": "Sample Text",
         "id": "1"
-    },
-    {
-        "title": "123",
-        "text": "123",
-        "id": "f56b"
     }
 ]
