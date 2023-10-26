@@ -2,36 +2,11 @@
     {
         "title": "Test Title",
         "text": "Test text",
-        "note_id": "1"
+        "id": "1"
     },
     {
-        "title": "asdf",
-        "text": "asdf",
-        "note_id": "fd80"
-    },
-    {
-        "title": "New Note",
-        "text": "Save Note",
-        "note_id": "549c"
-    },
-    {
-        "title": "Another Note",
-        "text": "Save Note",
-        "note_id": "48c5"
-    },
-    {
-        "title": "1",
-        "text": "2",
-        "note_id": "e62e"
-    },
-    {
-        "title": "Hi",
-        "text": "Hey there",
-        "note_id": "7f94"
-    },
-    {
-        "title": "Hello",
-        "text": "Hi there",
-        "note_id": "ea56"
+        "title": "123",
+        "text": "123",
+        "id": "f56b"
     }
 ]

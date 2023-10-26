@@ -40,6 +40,7 @@ app.get('/api/notes', (req, res) => {
     // Stores the parsed db.json file in the parsedDb const
     const parsedDb = JSON.parse(fs.readFileSync("db/db.json", "utf-8"));
     // Responds to the client with the parsedDb in JSON
+    // This allows the newly added note to render on the browser after clicking save
     res.json(parsedDb);
 });
 
